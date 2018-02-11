@@ -1,4 +1,4 @@
-FROM gimil/rvm:mri-2.4.0
+FROM gimil/rvm:mri-2.4.3
 LABEL maintainer="Zhimin (Gimi) Liang (https://github.com/Gimi)"
 
 RUN rvm install 2.5 \
