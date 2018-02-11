@@ -9,10 +9,14 @@ RUN mkdir -p /usr/local/etc \
 	} >> /usr/local/etc/gemrc
 
 # rvm.sh does not support sh
-SHELL ["/bin/bash", "-c"]
+SHELL ["/bin/bash", "-l", "-c"]
 RUN set -ex \
  && curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
  && curl -sSL https://get.rvm.io | bash -s head \
  && source /etc/profile.d/rvm.sh \
  && rvm autolibs enable \
  && echo "source /etc/profile.d/rvm.sh" >> /root/.bashrc
+
+VOLUME /app
+WORKDIR /app
+ENTRYPOINT ["/bin/bash", "-l", "-c"]
